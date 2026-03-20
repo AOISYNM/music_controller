@@ -35,7 +35,7 @@ export default function Room() {
                 });
             })
             .catch((error) => console.error("Failed to fetch room:", error));
-    }, [roomCode]);
+    }, [roomCode , navigate]);
 
     const handleLeaveRoom = async () => {
         await fetch("/api/leave-room/", { method: "POST" });
