@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-#fc&k)t6v1r)utw!3@w$(jy+dxg-4lszw8ti_+gd^yo13=0mq-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['music-controller-37f0.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -129,4 +129,8 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [],
     'DEFAULT_PERMISSION_CLASSES': [],
 }
-ALLOWED_HOSTS = ['music-controller-37f0.onrender.com', 'localhost', '127.0.0.1']
+
+CORS_ALLOWED_ORIGINS = [
+    "https://music-controller-three.vercel.app",
+    "http://localhost:3000",
+]
