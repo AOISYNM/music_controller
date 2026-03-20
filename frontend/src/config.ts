@@ -1,1 +1,1 @@
-export const API_BASE = "https://music-controller-37f0.onrender.com";
+export const API_BASE = process.env.REACT_APP_API_URL || "";
