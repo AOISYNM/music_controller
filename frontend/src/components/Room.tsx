@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
+import { API_BASE } from "../config";
 
 interface RoomState {
     votesToSkip: number;
@@ -17,7 +18,7 @@ export default function Room() {
     });
 
     useEffect(() => {
-        fetch(`/api/get-room?code=${roomCode}`)
+        fetch(`${API_BASE}/api/get-room?code=${roomCode}`)
             .then((resolve) => {
                 if (!resolve.ok) {
                     navigate("/");

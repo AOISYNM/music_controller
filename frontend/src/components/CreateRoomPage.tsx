@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { API_BASE } from "../config";
 
 const DEFAULT_VOTES_TO_SKIP = 2
 
@@ -10,7 +11,7 @@ export default function CreateRoomPage() {
 
     const handleCreateRoomButtonPressed = async () => {
         try {
-            const response = await fetch("/api/create-room/", {
+            const response = await fetch(`${API_BASE}/api/create-room/`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

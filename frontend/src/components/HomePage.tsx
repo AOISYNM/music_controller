@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import useRoomCode from "../hooks/UseRoomCode";
 import { useEffect } from "react";
+import { API_BASE } from "../config";
 
 export default function HomePage() {
   const navigate = useNavigate();

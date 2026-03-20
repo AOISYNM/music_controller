@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { API_BASE } from "../config";
 
 export default function RoomJoinPage() {
     const [roomCode, setRoomCode] = useState("");
@@ -12,7 +13,7 @@ export default function RoomJoinPage() {
 
     const roomJoinButtonPressed = async () => {
         try {
-            const response = await fetch("/api/join-room/", {
+            const response = await fetch(`${API_BASE}/api/join-room/`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ code: roomCode }),
