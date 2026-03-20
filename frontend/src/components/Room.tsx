@@ -38,7 +38,7 @@ export default function Room() {
     }, [roomCode , navigate]);
 
     const handleLeaveRoom = async () => {
-        await fetch("/api/leave-room/", { method: "POST" });
+        await fetch(`${API_BASE}/api/leave-room/`, { method: "POST" });
         navigate("/");
     };
 
