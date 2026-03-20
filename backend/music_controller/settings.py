@@ -129,3 +129,4 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [],
     'DEFAULT_PERMISSION_CLASSES': [],
 }
+ALLOWED_HOSTS = ['music-controller-37f0.onrender.com', 'localhost', '127.0.0.1']
