@@ -14,6 +14,7 @@ export default function CreateRoomPage() {
             const response = await fetch(`${API_BASE}/api/create-room/`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
+                 credentials: "include",
                 body: JSON.stringify({
                     votes_to_skip: votesToSkip,
                     guest_can_pause: guestCanPause,

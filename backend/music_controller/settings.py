@@ -27,6 +27,15 @@ SECRET_KEY = 'django-insecure-#fc&k)t6v1r)utw!3@w$(jy+dxg-4lszw8ti_+gd^yo13=0mq-
 DEBUG = True
 
 ALLOWED_HOSTS = ['music-controller-37f0.onrender.com', 'localhost', '127.0.0.1']
+SESSION_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'None'
+CSRF_COOKIE_SECURE = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = [
+    "https://music-controller-three.vercel.app",
+    "http://localhost:3000",
+]
 
 
 # Application definition
@@ -129,8 +138,3 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [],
     'DEFAULT_PERMISSION_CLASSES': [],
 }
-
-CORS_ALLOWED_ORIGINS = [
-    "https://music-controller-three.vercel.app",
-    "http://localhost:3000",
-]

@@ -18,7 +18,9 @@ export default function Room() {
     });
 
     useEffect(() => {
-        fetch(`${API_BASE}/api/get-room?code=${roomCode}`)
+        fetch(`${API_BASE}/api/get-room?code=${roomCode}`, {
+            credentials: "include",
+        })
             .then((resolve) => {
                 if (!resolve.ok) {
                     navigate("/");
@@ -36,11 +38,14 @@ export default function Room() {
             })
             .catch((error) => console.error("Failed to fetch room:", error));
     }, [roomCode , navigate]);
-
-    const handleLeaveRoom = async () => {
-        await fetch(`${API_BASE}/api/leave-room/`, { method: "POST" });
-        navigate("/");
-    };
+    
+  const handleLeaveRoom = async () => {
+    await fetch(`${API_BASE}/api/leave-room/`, { 
+        method: "POST",
+        credentials: "include",
+    });
+    navigate("/");
+};
 
     return (
         <>
