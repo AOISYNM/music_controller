@@ -37,15 +37,15 @@ export default function Room() {
                 });
             })
             .catch((error) => console.error("Failed to fetch room:", error));
-    }, [roomCode , navigate]);
-    
-  const handleLeaveRoom = async () => {
-    await fetch(`${API_BASE}/api/leave-room/`, { 
-        method: "POST",
-        credentials: "include",
-    });
-    navigate("/");
-};
+    }, [roomCode, navigate]);
+
+    const handleLeaveRoom = async () => {
+        await fetch(`${API_BASE}/api/leave-room/`, {
+            method: "POST",
+            credentials: "include",
+        });
+        navigate("/");
+    };
 
     return (
         <>
@@ -90,46 +90,36 @@ export default function Room() {
                 .card::before { top:-1px; left:-1px; border-width:2px 0 0 2px; border-radius:24px 0 0 0; box-shadow:-4px -4px 16px rgba(139,92,246,0.3); }
                 .card::after { bottom:-1px; right:-1px; border-width:0 2px 2px 0; border-radius:0 0 24px 0; box-shadow:4px 4px 16px rgba(236,72,153,0.3); }
 
-                .heading {
-                    font-family:'Syne',sans-serif; font-size:2.75rem; font-weight:800;
-                    line-height:1.05; letter-spacing:-0.03em;
-                    background:linear-gradient(135deg,#fff 0%,rgba(255,255,255,0.75) 100%);
-                    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin:0;
-                }
-                .room-code {
-                    font-family:'Syne',sans-serif; font-size:1.1rem; font-weight:700;
-                    letter-spacing:0.25em; text-transform:uppercase;
-                    background:linear-gradient(135deg,#a855f7,#ec4899);
-                    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-                    padding:0.4rem 1.2rem; border-radius:999px;
-                    border:1px solid rgba(168,85,247,0.25);
-                    background-color:rgba(168,85,247,0.08);
-                }
+                .heading { font-family:'Syne',sans-serif; font-size:2.75rem; font-weight:800; line-height:1.05; letter-spacing:-0.03em; background:linear-gradient(135deg,#fff 0%,rgba(255,255,255,0.75) 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin:0; }
+                .room-code { font-family:'Syne',sans-serif; font-size:1.1rem; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; background:linear-gradient(135deg,#a855f7,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; padding:0.4rem 1.2rem; border-radius:999px; border:1px solid rgba(168,85,247,0.25); background-color:rgba(168,85,247,0.08); }
                 .subheading { font-size:0.75rem; color:rgba(255,255,255,0.35); margin:0; font-weight:300; letter-spacing:0.04em; text-transform:uppercase; }
                 .divider { width:100%; height:1px; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent); }
 
-                /* Stats grid */
                 .stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; width:100%; }
-                .stat-card {
-                    display:flex; flex-direction:column; gap:0.35rem;
-                    padding:1rem 1.25rem; border-radius:14px;
-                    background:rgba(255,255,255,0.03);
-                    border:1px solid rgba(255,255,255,0.07);
-                }
+                .stat-card { display:flex; flex-direction:column; gap:0.35rem; padding:1rem 1.25rem; border-radius:14px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); }
                 .stat-label { font-size:0.7rem; color:rgba(255,255,255,0.3); text-transform:uppercase; letter-spacing:0.08em; font-weight:400; }
                 .stat-value { font-family:'Syne',sans-serif; font-size:1.3rem; font-weight:700; color:#fff; }
                 .stat-value.accent { background:linear-gradient(135deg,#a855f7,#38bdf8); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-                .stat-card.host-card { grid-column: span 2; flex-direction:row; align-items:center; justify-content:space-between; }
+                .stat-card.host-card { grid-column:span 2; flex-direction:row; align-items:center; justify-content:space-between; }
 
-                /* Host badge */
-                .host-badge {
-                    font-size:0.72rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase;
-                    padding:0.3rem 0.85rem; border-radius:999px;
-                }
+                .host-badge { font-size:0.72rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:0.3rem 0.85rem; border-radius:999px; }
                 .host-badge.yes { background:rgba(139,92,246,0.15); color:#c084fc; border:1px solid rgba(139,92,246,0.3); box-shadow:0 0 12px rgba(139,92,246,0.2); }
-                .host-badge.no  { background:rgba(255,255,255,0.05); color:rgba(255,255,255,0.35); border:1px solid rgba(255,255,255,0.08); }
+                .host-badge.no { background:rgba(255,255,255,0.05); color:rgba(255,255,255,0.35); border:1px solid rgba(255,255,255,0.08); }
 
-                /* Leave button */
+                .btn-row { display:flex; flex-direction:column; gap:0.875rem; width:100%; }
+
+                .btn-settings {
+                    width:100%; padding:1.1rem 2rem; border-radius:14px; cursor:pointer;
+                    font-family:'Syne',sans-serif; font-size:1rem; font-weight:700;
+                    letter-spacing:0.05em; text-transform:uppercase;
+                    color:rgba(255,255,255,0.8); background:transparent;
+                    border:1px solid rgba(255,255,255,0.12);
+                    box-shadow:0 0 20px rgba(139,92,246,0.08),inset 0 1px 0 rgba(255,255,255,0.05);
+                    transition:all 0.2s ease;
+                }
+                .btn-settings:hover { background:rgba(139,92,246,0.08); border-color:rgba(139,92,246,0.5); color:#fff; box-shadow:0 0 30px rgba(139,92,246,0.25),inset 0 1px 0 rgba(255,255,255,0.08); transform:translateY(-2px); }
+                .btn-settings:active { transform:scale(0.98); }
+
                 .btn-leave {
                     width:100%; padding:1.1rem 2rem; border-radius:14px; cursor:pointer;
                     font-family:'Syne',sans-serif; font-size:1rem; font-weight:700;
@@ -158,7 +148,6 @@ export default function Room() {
                 <div className="dot dot-5" />
 
                 <div className="card">
-                    {/* Header */}
                     <div style={{ display:"flex", flexDirection:"column", gap:"0.75rem", alignItems:"center" }}>
                         <p className="subheading">Now in session</p>
                         <h1 className="heading">Music Room</h1>
@@ -167,7 +156,6 @@ export default function Room() {
 
                     <div className="divider" />
 
-                    {/* Stats */}
                     <div className="stats-grid">
                         <div className="stat-card">
                             <span className="stat-label">Votes to Skip</span>
@@ -187,10 +175,12 @@ export default function Room() {
 
                     <div className="divider" />
 
-                    {/* Leave button */}
-                    <button className="btn-leave" onClick={handleLeaveRoom}>
-                        Leave Room
-                    </button>
+                    <div className="btn-row">
+                    
+                        <button className="btn-leave" onClick={handleLeaveRoom}>
+                            Leave Room
+                        </button>
+                    </div>
                 </div>
             </div>
         </>
